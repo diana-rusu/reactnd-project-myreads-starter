@@ -15,6 +15,9 @@ class Bookshelves extends Component {
       }
 
     render() {
+        let currentlyReadingList = []
+        let wantToReadList = []
+        let readList = []
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -22,9 +25,27 @@ class Bookshelves extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                    <Bookshelf category='Currently Reading' books={this.state.books} />
-                    <Bookshelf category='Want to Read' books={this.state.books} />
-                    <Bookshelf category='Read' books={this.state.books} />
+                        {this.state.books.forEach((book) => {
+                            if(book.shelf === 'currentlyReading') {
+                                currentlyReadingList.push(book)
+                            } else if (book.shelf === 'wantToRead') {
+                                wantToReadList.push(book)
+                            } else {
+                                readList.push(book)
+                            }
+                        })}
+                        <Bookshelf 
+                            category='Currently Reading'
+                            books={currentlyReadingList}
+                        />
+                        <Bookshelf 
+                            category='Want to Read' 
+                            books={wantToReadList} 
+                        />
+                        <Bookshelf 
+                            category='Read' 
+                            books={readList} 
+                        />
                     </div>
                 </div>
                 <div className="open-search">
