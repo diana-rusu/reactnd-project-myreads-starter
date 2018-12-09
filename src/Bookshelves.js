@@ -12,7 +12,7 @@ class Bookshelves extends Component {
         BooksAPI.getAll().then((books) => this.setState({
           books
         }));
-      }
+    }
 
     render() {
         let currentlyReadingList = []
