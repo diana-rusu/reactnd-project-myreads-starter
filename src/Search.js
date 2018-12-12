@@ -12,7 +12,7 @@ class Search extends Component {
         }
     }
     searchBooks() {
-        BooksAPI.search(this.state.query)
+        BooksAPI.search(this.state.query.trim())
         .then((books) => {
             if (books.error === "empty query") {
                 this.setState({
@@ -64,6 +64,7 @@ class Search extends Component {
                         return <li 
                             key={book.id}>
                         <Book 
+                            book={book}
                             title={book.title} 
                             authors={book.authors} 
                             url={`url(${book.imageLinks['thumbnail']})`}

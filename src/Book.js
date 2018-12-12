@@ -8,7 +8,7 @@ class Book extends Component {
             <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: this.props.url }}></div>
                 <div className="book-shelf-changer">
-                    <Selector />
+                    <Selector book={this.props.book} />
                 </div>
             </div>
             <div className="book-title">{this.props.title}</div>

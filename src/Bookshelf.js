@@ -12,6 +12,7 @@ class Bookshelf extends Component {
                        return <li 
                         key={book.title}>
                         <Book 
+                            book={book}
                             title={book.title} 
                             authors={book.authors} 
                             url={`url(${book.imageLinks['thumbnail']})`}
