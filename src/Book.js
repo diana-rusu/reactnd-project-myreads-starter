@@ -11,7 +11,9 @@ class Book extends Component {
             style={{ width: 128, height: 193, backgroundImage: this.props.url }}
           />
           <div className="book-shelf-changer">
-            <Selector book={this.props.book} />
+            <Selector
+             handleOnBookUpdate={this.props.handleOnBookUpdate} 
+            book={this.props.book} />
           </div>
         </div>
         <div className="book-title">{this.props.title}</div>

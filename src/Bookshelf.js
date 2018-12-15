@@ -12,6 +12,7 @@ class Bookshelf extends Component {
               return (
                 <li key={book.title}>
                   <Book
+                    handleOnBookUpdate={this.props.handleOnBookUpdate}
                     book={book}
                     title={book.title}
                     authors={book.authors}

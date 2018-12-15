@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as BooksAPI from "./BooksAPI";
+import { Select } from './Select';
 
 class Selector extends Component {
   state = {
@@ -16,7 +17,8 @@ class Selector extends Component {
       } else {
         this.setState({
           books: books
-        });
+        })
+        this.props.handleOnBookUpdate(this.state.books);
       }
     });
   }
@@ -31,13 +33,7 @@ class Selector extends Component {
 
   render() {
     return (
-      <select onChange={this.onChange}>
-        <option value="move">Move to...</option>
-        <option value="currentlyReading">Currently Reading</option>
-        <option value="wantToRead">Want to Read</option>
-        <option value="read">Read</option>
-        <option value="none">None</option>
-      </select>
+      <Select name="category" value={this.state.shelf} onChange={this.onChange} />
     );
   }
 }

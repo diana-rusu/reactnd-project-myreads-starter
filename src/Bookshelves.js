@@ -12,32 +12,26 @@ class Bookshelves extends Component {
   }
 
   componentDidMount() {
-    this.mounted = true;
     this.getAllBooks();
   }
 
   getBookById = id => {
     BooksAPI.get(id).then(book => {
+      console.log(book);
       return book;
     });
   };
 
   getAllBooks = () => {
-    BooksAPI.getAll().then(books => {
-      if (this.mounted) {
+    BooksAPI.getAll().then(books => { 
         this.setState({
           books
         });
-      }
     });
   };
 
-  componentDidUpdate() {
+  handleOnBookUpdate = (books) => {
     this.getAllBooks();
-  }
-
-  componentWillUnmount() {
-    this.mounted = false;
   }
 
   render() {
@@ -61,14 +55,17 @@ class Bookshelves extends Component {
               }
             })}
             <Bookshelf
+              handleOnBookUpdate={this.handleOnBookUpdate}
               category="Currently Reading"
               books={currentlyReadingList}
             />
             <Bookshelf
+              handleOnBookUpdate={this.handleOnBookUpdate}
               category="Want to Read"
               books={wantToReadList}
             />
             <Bookshelf
+             handleOnBookUpdate={this.handleOnBookUpdate}
               category="Read"
               books={readList}
             />
