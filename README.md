@@ -1,7 +1,7 @@
 # MyReads Project
 
 ## Project Overview
-MyReads project is about creating a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
+MyReads is a project proposed by Udacity. This project features creating a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
 
 ## TL;DR
 

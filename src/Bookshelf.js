@@ -9,6 +9,7 @@ class Bookshelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.books.map(book => {
+  
               return (
                 <li key={book.title}>
                   <Book

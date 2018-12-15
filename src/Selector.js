@@ -4,12 +4,12 @@ import { Select } from './Select';
 
 class Selector extends Component {
   state = {
-    shelf: "",
+    value: "",
     books: []
   };
 
   updateBook() {
-    BooksAPI.update(this.props.book, this.state.shelf).then(books => {
+    BooksAPI.update(this.props.book, this.state.value).then(books => {
       if (books.error === "empty query") {
         this.setState({
           books: []
@@ -23,17 +23,17 @@ class Selector extends Component {
     });
   }
   onChange = event => {
-    this.setState({ shelf: event.target.value }, () => {
-      if (this.state.shelf) {
+    this.setState({ value: event.target.value }, () => {
+      if (this.state.value) {
         this.updateBook();
-      } else if (!this.state.shelf) {
+      } else if (!this.state.value) {
       }
     });
   };
 
   render() {
     return (
-      <Select name="category" value={this.state.shelf} onChange={this.onChange} />
+      <Select name="category" value={this.state.value} onChange={this.onChange.bind(this)} />
     );
   }
 }

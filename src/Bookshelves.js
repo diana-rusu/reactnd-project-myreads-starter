@@ -17,7 +17,6 @@ class Bookshelves extends Component {
 
   getBookById = id => {
     BooksAPI.get(id).then(book => {
-      console.log(book);
       return book;
     });
   };

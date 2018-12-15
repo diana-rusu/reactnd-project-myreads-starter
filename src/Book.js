@@ -13,7 +13,7 @@ class Book extends Component {
           <div className="book-shelf-changer">
             <Selector
              handleOnBookUpdate={this.props.handleOnBookUpdate} 
-            book={this.props.book} />
+              book={this.props.book} />
           </div>
         </div>
         <div className="book-title">{this.props.title}</div>
