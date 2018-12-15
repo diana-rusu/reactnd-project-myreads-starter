@@ -1,39 +1,45 @@
-import React, { Component } from 'react';
-import * as BooksAPI from './BooksAPI'
+import React, { Component } from "react";
+import * as BooksAPI from "./BooksAPI";
 
 class Selector extends Component {
-    state ={
-        shelf: ''
-    }
+  state = {
+    shelf: "",
+    books: []
+  };
 
-    updateBook() {
-        BooksAPI.update(this.props.book, this.state.shelf)
-        .then((response) =>{
-            console.log("RESPONSE", response)
+  updateBook() {
+    BooksAPI.update(this.props.book, this.state.shelf).then(books => {
+      if (books.error === "empty query") {
+        this.setState({
+          books: []
         });
-    }
-    onChange = event => {
-        this.setState({ shelf: event.target.value },
-            () => {
-                if (this.state.shelf) {
-                    this.updateBook()
-                } else if (!this.state.shelf) {
-                }
+      } else {
+        this.setState({
+          books: books
         });
-      };
-    
-    render() {
-        
-        return (
-            <select onChange={this.onChange}>
-                <option value="move" disabled>Move to...</option>
-                <option value="currentlyReading" >Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
-                <option value="none">None</option>
-            </select>
-        )
-    }
+      }
+    });
+  }
+  onChange = event => {
+    this.setState({ shelf: event.target.value }, () => {
+      if (this.state.shelf) {
+        this.updateBook();
+      } else if (!this.state.shelf) {
+      }
+    });
+  };
+
+  render() {
+    return (
+      <select onChange={this.onChange}>
+        <option value="move">Move to...</option>
+        <option value="currentlyReading">Currently Reading</option>
+        <option value="wantToRead">Want to Read</option>
+        <option value="read">Read</option>
+        <option value="none">None</option>
+      </select>
+    );
+  }
 }
 
 export default Selector;
