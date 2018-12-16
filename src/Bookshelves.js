@@ -4,11 +4,12 @@ import Bookshelf from "./Bookshelf";
 import * as BooksAPI from "./BooksAPI";
 
 class Bookshelves extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       books: []
     };
+    this.handleOnBookUpdate = this.handleOnBookUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class Bookshelves extends Component {
     });
   };
 
-  handleOnBookUpdate = (books) => {
+  handleOnBookUpdate = () => {
     this.getAllBooks();
   }
 

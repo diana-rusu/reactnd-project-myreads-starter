@@ -3,10 +3,15 @@ import * as BooksAPI from "./BooksAPI";
 import { Select } from './Select';
 
 class Selector extends Component {
-  state = {
-    value: "",
-    books: []
-  };
+  constructor() {
+    super()
+    this.state = {
+      value: "none",
+      books: []
+    };
+    this.onChange = this.onChange.bind(this)
+  }
+  
 
   updateBook() {
     BooksAPI.update(this.props.book, this.state.value).then(books => {
@@ -18,7 +23,7 @@ class Selector extends Component {
         this.setState({
           books: books
         })
-        this.props.handleOnBookUpdate(this.state.books);
+        this.props.handleOnBookUpdate();
       }
     });
   }
@@ -33,7 +38,11 @@ class Selector extends Component {
 
   render() {
     return (
-      <Select name="category" value={this.state.value} onChange={this.onChange.bind(this)} />
+      <Select 
+      name="category" 
+      value={this.state.value} 
+      onChange={this.onChange}
+      />
     );
   }
 }
