@@ -22,8 +22,7 @@ class Selector extends Component {
       } else {
         this.setState({
           books: books
-        })
-        this.props.handleOnBookUpdate();
+        })   
       }
     });
   }
@@ -31,6 +30,7 @@ class Selector extends Component {
     this.setState({ value: event.target.value }, () => {
       if (this.state.value) {
         this.updateBook();
+        this.props.handleOnBookUpdate();
       } else if (!this.state.value) {
       }
     });
