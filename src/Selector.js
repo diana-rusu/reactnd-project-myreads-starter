@@ -3,10 +3,10 @@ import * as BooksAPI from "./BooksAPI";
 import { Select } from './Select';
 
 class Selector extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      value: "none",
+      value: props.book.shelf ? props.book.shelf: "none",
       books: []
     };
     this.onChange = this.onChange.bind(this)
@@ -40,7 +40,7 @@ class Selector extends Component {
     return (
       <Select 
       name="category" 
-      value={this.state.value} 
+      value={this.state.value}
       onChange={this.onChange}
       />
     );
