@@ -30,7 +30,7 @@ class Bookshelves extends Component {
     });
   };
 
-  handleOnBookUpdate = () => {
+  handleOnBookUpdate() {
     this.getAllBooks();
   }
 

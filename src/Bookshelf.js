@@ -9,6 +9,12 @@ class Bookshelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.books.map(book => {
+              if(typeof book.authors === "undefined") {
+                book["authors"] = ""
+              }
+              if(typeof book.imageLinks === "undefined"){
+                book["imageLinks"] = ""
+              }
               return (
                 <li key={book.id}>
                   <Book

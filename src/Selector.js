@@ -5,6 +5,7 @@ import { Select } from './Select';
 class Selector extends Component {
   constructor(props) {
     super(props)
+    this.handleOnBookUpdate = () => props.handleOnBookUpdate()
     this.state = {
       value: props.book.shelf ? props.book.shelf: "none",
       books: []
@@ -23,6 +24,7 @@ class Selector extends Component {
         this.setState({
           books: books
         })   
+        this.handleOnBookUpdate()
       }
     });
   }
@@ -30,7 +32,6 @@ class Selector extends Component {
     this.setState({ value: event.target.value }, () => {
       if (this.state.value) {
         this.updateBook();
-        this.props.handleOnBookUpdate();
       } else if (!this.state.value) {
       }
     });
