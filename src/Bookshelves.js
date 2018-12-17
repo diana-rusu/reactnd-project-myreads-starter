@@ -23,10 +23,10 @@ class Bookshelves extends Component {
   };
 
   getAllBooks = () => {
-    BooksAPI.getAll().then(books => { 
-        this.setState({
-          books
-        });
+    BooksAPI.getAll().then(books => {
+      this.setState({
+        books
+      });
     });
   };
 
@@ -65,7 +65,7 @@ class Bookshelves extends Component {
               books={wantToReadList}
             />
             <Bookshelf
-             handleOnBookUpdate={this.handleOnBookUpdate}
+              handleOnBookUpdate={this.handleOnBookUpdate}
               category="Read"
               books={readList}
             />

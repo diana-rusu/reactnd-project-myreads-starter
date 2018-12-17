@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import Book from "./Book";
+import PropTypes from "prop-types";
 
 class Bookshelf extends Component {
+  static propTypes = {
+    handleOnBookUpdate: PropTypes.func,
+    books: PropTypes.array.isRequired
+  };
   render() {
     return (
       <div className="bookshelf">
@@ -9,11 +14,11 @@ class Bookshelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.books.map(book => {
-              if(typeof book.authors === "undefined") {
-                book["authors"] = ""
+              if (typeof book.authors === "undefined") {
+                book["authors"] = "";
               }
-              if(typeof book.imageLinks === "undefined"){
-                book["imageLinks"] = ""
+              if (typeof book.imageLinks === "undefined") {
+                book["imageLinks"] = "";
               }
               return (
                 <li key={book.id}>

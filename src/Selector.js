@@ -1,30 +1,23 @@
 import React, { Component } from "react";
 import * as BooksAPI from "./BooksAPI";
-import { Select } from './Select';
+import { Select } from "./Select";
+import PropTypes from "prop-types";
 
 class Selector extends Component {
-  constructor(props) {
-    super(props)
-    this.handleOnBookUpdate = () => props.handleOnBookUpdate()
-    this.state = {
-      value: props.book.shelf ? props.book.shelf: "none",
-      books: []
-    };
-    this.onChange = this.onChange.bind(this)
-  }
-  
+  static propTypes = {
+    handleOnBookUpdate: PropTypes.func
+  };
+
+  state = {
+    value: this.props.book.shelf ? this.props.book.shelf : "none"
+  };
 
   updateBook() {
     BooksAPI.update(this.props.book, this.state.value).then(books => {
-      if (books.error === "empty query") {
-        this.setState({
-          books: []
-        });
-      } else {
-        this.setState({
-          books: books
-        })   
-        this.handleOnBookUpdate()
+      if (books.error !== "empty query") {
+        if (window.location.pathname === "/") {
+          this.props.handleOnBookUpdate();
+        } 
       }
     });
   }
@@ -39,10 +32,10 @@ class Selector extends Component {
 
   render() {
     return (
-      <Select 
-      name="category" 
-      value={this.state.value}
-      onChange={this.onChange}
+      <Select
+        name="category"
+        value={this.state.value}
+        onChange={this.onChange}
       />
     );
   }

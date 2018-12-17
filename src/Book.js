@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import Selector from "./Selector";
+import PropTypes from "prop-types";
 
 class Book extends Component {
+  static propTypes = {
+    handleOnBookUpdate: PropTypes.func,
+    book: PropTypes.object
+  };
   render() {
     return (
       <div className="book">
@@ -12,8 +17,9 @@ class Book extends Component {
           />
           <div className="book-shelf-changer">
             <Selector
-             handleOnBookUpdate={this.props.handleOnBookUpdate} 
-              book={this.props.book} />
+              handleOnBookUpdate={this.props.handleOnBookUpdate}
+              book={this.props.book}
+            />
           </div>
         </div>
         <div className="book-title">{this.props.title}</div>
